@@ -2,7 +2,7 @@
 [![JCS-ELPA](https://raw.githubusercontent.com/jcs-emacs/jcs-elpa/master/badges/v/fextern.svg)](https://jcs-emacs.github.io/jcs-elpa/#/fextern)
 
 # fextern
-> Record file external states
+> Record file external stats
 
 [![CI](https://github.com/emacs-vs/fextern/actions/workflows/test.yml/badge.svg)](https://github.com/emacs-vs/fextern/actions/workflows/test.yml)
 
