@@ -46,7 +46,6 @@ This variable is used to check if file are edited externally.")
 
 ;;;###autoload
 (advice-add 'save-buffer :after #'fextern-update-buffer-save-string)
-
 ;;;###autoload
 (add-hook 'find-file-hook #'fextern-update-buffer-save-string)
 
