@@ -47,21 +47,23 @@ This variable is used to check if file are edited externally.")
   "Update variable `fextern-buffer-save-string-md5' once."
   (setq fextern-buffer-save-string-md5 (md5 (buffer-string))))
 
-(defun fextern--after-save-buffer (&rest _)
+;;;###autoload
+(defun fextern-after-save-buffer (&rest _)
   "Advice after `save-buffer'."
   (fextern-update-buffer-save-string)
   (setq fextern-buffer-newly-created nil))
 
-(defun fextern--find-file (&rest _)
+;;;###autoload
+(defun fextern-find-file (&rest _)
   "Hook `find-file'."
   (fextern-update-buffer-save-string)
   (unless (file-exists-p buffer-file-name)
     (setq fextern-buffer-newly-created t)))
 
 ;;;###autoload
-(advice-add 'save-buffer :after #'fextern--after-save-buffer)
+(advice-add 'save-buffer :after #'fextern-after-save-buffer)
 ;;;###autoload
-(add-hook 'find-file-hook #'fextern--find-file)
+(add-hook 'find-file-hook #'fextern-find-file)
 
 ;;
 ;; (@* "Util" )
