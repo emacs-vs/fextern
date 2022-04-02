@@ -39,15 +39,29 @@
   "Buffer string when buffer is saved; this value encrypted with md5 algorithm.
 This variable is used to check if file are edited externally.")
 
+(defvar-local fextern-buffer-newly-created nil
+  "Set to t if buffer is newly created.")
+
 ;;;###autoload
 (defun fextern-update-buffer-save-string (&rest _)
   "Update variable `fextern-buffer-save-string-md5' once."
   (setq fextern-buffer-save-string-md5 (md5 (buffer-string))))
 
+(defun fextern--after-save-buffer (&rest _)
+  "Advice after `save-buffer'."
+  (fextern-update-buffer-save-string)
+  (setq fextern-buffer-newly-created nil))
+
+(defun fextern--find-file (&rest _)
+  "Hook `find-file'."
+  (fextern-update-buffer-save-string)
+  (unless (file-exists-p buffer-file-name)
+    (setq fextern-buffer-newly-created t)))
+
 ;;;###autoload
-(advice-add 'save-buffer :after #'fextern-update-buffer-save-string)
+(advice-add 'save-buffer :after #'fextern--after-save-buffer)
 ;;;###autoload
-(add-hook 'find-file-hook #'fextern-update-buffer-save-string)
+(add-hook 'find-file-hook #'fextern--find-file)
 
 ;;
 ;; (@* "Util" )
