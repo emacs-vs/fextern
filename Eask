@@ -1,4 +1,7 @@
-(package "fextern" "0.1.0" "Record file external stats")
+(package "fextern"
+         "0.1.0"
+         "Record file external stats")
+
 (package-file "fextern.el")
 
 (source "melpa")
