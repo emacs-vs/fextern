@@ -57,7 +57,7 @@ This variable is used to check if file are edited externally.")
 (defun fextern-find-file (&rest _)
   "Hook `find-file'."
   (fextern-update-buffer-save-string)
-  (unless (file-exists-p buffer-file-name)
+  (unless (ignore-errors (file-exists-p buffer-file-name))
     (setq fextern-buffer-newly-created t)))
 
 ;;;###autoload
