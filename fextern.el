@@ -35,7 +35,6 @@
 (require 'cl-lib)
 (require 'subr-x)
 
-
 (defvar-local fextern-buffer-save-string-md5 nil
   "Buffer string when buffer is saved; this value encrypted with md5 algorithm.
 This variable is used to check if file are edited externally.")
