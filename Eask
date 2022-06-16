@@ -2,6 +2,9 @@
          "0.1.0"
          "Record file external stats")
 
+(website-url "https://github.com/emacs-vs/fextern")
+(keywords "externally" "file" "stats")
+
 (package-file "fextern.el")
 
 (source "melpa")
