@@ -3,7 +3,7 @@
          "Record file external stats")
 
 (website-url "https://github.com/emacs-vs/fextern")
-(keywords "externally" "file" "stats")
+(keywords "convenience" "externally" "file" "stats")
 
 (package-file "fextern.el")
 
