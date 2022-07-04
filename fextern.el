@@ -7,7 +7,7 @@
 ;; URL: https://github.com/emacs-vs/fextern
 ;; Version: 0.1.0
 ;; Package-Requires: ((emacs "25.1"))
-;; Keywords: externally file stats
+;; Keywords: convenience externally file stats
 
 ;; This file is NOT part of GNU Emacs.
 
