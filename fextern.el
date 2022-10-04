@@ -53,16 +53,17 @@ This variable is used to check if file are edited externally.")
   (setq fextern-buffer-newly-created nil))
 
 ;;;###autoload
-(defun fextern-find-file (&rest _)
-  "Hook `find-file'."
+(defun fextern-visit-file (&rest _)
+  "Execution when visiting a file."
   (fextern-update-buffer-save-string)
   (unless (ignore-errors (file-exists-p buffer-file-name))
     (setq fextern-buffer-newly-created t)))
 
 ;;;###autoload
-(advice-add 'save-buffer :after #'fextern-after-save-buffer)
-;;;###autoload
-(add-hook 'find-file-hook #'fextern-find-file)
+(progn
+  (advice-add 'save-buffer :after #'fextern-after-save-buffer)
+  (add-hook 'find-file-hook #'fextern-visit-file)
+  (advice-add 'clear-visited-file-modtime :after #'fextern-visit-file))
 
 ;;
 ;; (@* "Util" )
