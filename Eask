@@ -1,3 +1,5 @@
+;; -*- mode: eask; lexical-binding: t -*-
+
 (package "fextern"
          "0.1.0"
          "Record file external stats")
